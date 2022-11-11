@@ -1,4 +1,5 @@
 require './lib/enigma'
+require 'time'
 
 RSpec.describe Enigma do
 
@@ -29,7 +30,6 @@ RSpec.describe Enigma do
 
   it "has a keys hash" do
     enigma = Enigma.new
-    # require pry' ; binding.pry
 
     expect(enigma.keys).to be_a(Hash)
     expect(enigma.keys("02715").values[0]).to eq(02)
@@ -37,6 +37,12 @@ RSpec.describe Enigma do
     expect(enigma.keys("02715").values[2]).to eq(71)
     expect(enigma.keys("02715").values[3]).to eq(15)
 
+  end
+
+  it 'can get the date as MMDDYY' do
+    enigma = Enigma.new
+
+    expect(enigma.date).to eq(111122)
   end
 
 

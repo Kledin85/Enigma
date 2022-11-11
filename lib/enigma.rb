@@ -21,7 +21,11 @@ class Enigma
     # require 'pry' ; binding.pry
   end
 
-  def encrypt(message, key = num_gen, month)
+  def date
+    "#{Time.now.strftime("%m%d%y")}".to_i
+  end
+
+  def encrypt(message, key = num_gen, date = date)
     hash = {}
     encrypted = message
   end
