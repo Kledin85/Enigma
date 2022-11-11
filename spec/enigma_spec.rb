@@ -54,17 +54,17 @@ RSpec.describe Enigma do
   it 'can grab the last four digits of date_sq' do
     enigma = Enigma.new
 
-    expect(enigma.offset_key).to eq(8884)
+    expect(enigma.offset_key).to eq("8884")
   end
 
   it 'has an offset hash' do
     enigma = Enigma.new
 
     expect(enigma.offset).to be_a(Hash)
-    expect(enigma.offset.keys.values[0]).to eq(8)
-    expect(enigma.offset.keys.values[1]).to eq(8)
-    expect(enigma.offset.keys.values[2]).to eq(8)
-    expect(enigma.offset.keys.values[3]).to eq(4)
+    expect(enigma.offset.values[0]).to eq(8)
+    expect(enigma.offset.values[1]).to eq(8)
+    expect(enigma.offset.values[2]).to eq(8)
+    expect(enigma.offset.values[3]).to eq(4)
 
   end
 end

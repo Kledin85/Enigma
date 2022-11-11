@@ -30,7 +30,17 @@ class Enigma
   end
 
   def offset_key
-    date_sq.digits.reverse.last(4).join.to_i
+    date_sq.digits.reverse.last(4).join
+  end
+
+  def offset
+    {
+      :offset_a => offset_key[0].to_i,
+      :offset_b => offset_key[1].to_i,
+      :offset_c => offset_key[2].to_i,
+      :offset_d => offset_key[3].to_i
+
+    }
   end
 
   # def encrypt(message, key = num_gen, date)
