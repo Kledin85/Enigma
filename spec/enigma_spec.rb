@@ -50,4 +50,10 @@ RSpec.describe Enigma do
 
     expect(enigma.date_sq).to eq(12348098884)
   end
+
+  it 'can grab the last four digits of date_sq' do
+    enigma = Enigma.new
+
+    expect(enigma.offset_key).to eq(8884)
+  end
 end
