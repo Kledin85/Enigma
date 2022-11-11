@@ -34,6 +34,9 @@ RSpec.describe Enigma do
     expect(enigma.keys).to be_a(Hash)
     expect(enigma.keys("02715").values[0]).to eq(02)
     expect(enigma.keys("02715").values[1]).to eq(27)
+    expect(enigma.keys("02715").values[2]).to eq(71)
+    expect(enigma.keys("02715").values[3]).to eq(15)
+
   end
 
 
