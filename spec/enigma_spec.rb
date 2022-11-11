@@ -42,12 +42,12 @@ RSpec.describe Enigma do
   it 'can get the date as MMDDYY' do
     enigma = Enigma.new
 
-    expect(enigma.date).to eq(111122)
+    expect(enigma.date).to eq("111122")
   end
 
   it 'can square the date' do
     enigma = Enigma.new
 
     expect(enigma.date_sq).to eq(12348098884)
-
+  end
 end

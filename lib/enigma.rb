@@ -22,10 +22,14 @@ class Enigma
   end
 
   def date
-    "#{Time.now.strftime("%m%d%y")}".to_i
+    "#{Time.now.strftime("%m%d%y")}"
   end
 
-  def encrypt(message, key = num_gen, date = date)
+  def date_sq
+    date.to_i ** 2
+  end
+
+  def encrypt(message, key = num_gen, date)
     hash = {}
     encrypted = message
   end
