@@ -7,8 +7,20 @@ class Enigma
     ("a".."z").to_a << " "
   end
 
-  def encrypt(message, key, month)
+  def num_gen
+    rand.to_s[2..6]
+  end
+
+  def keys(key = num_gen)
+    {
+      :key_a => key.scan(/../)[0].to_i,
+      :key_b => key.scan(//)
+    }
+    # require 'pry' ; binding.pry
+  end
+
+  def encrypt(message, key = num_gen, month)
     hash = {}
-    encryoted
+    encrypted = message
   end
 end

@@ -29,9 +29,11 @@ RSpec.describe Enigma do
 
   it "has a keys hash" do
     enigma = Enigma.new
+    # require pry' ; binding.pry
 
     expect(enigma.keys).to be_a(Hash)
-    expect(enigma.keys("02175")[:key_A]).to eq(02)
+    expect(enigma.keys("02715").values[0]).to eq(02)
+    expect(enigma.keys("02715").values[1]).to eq(27)
   end
 
 
