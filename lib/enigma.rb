@@ -29,8 +29,12 @@ class Enigma
     date.to_i ** 2
   end
 
-  def encrypt(message, key = num_gen, date)
-    hash = {}
-    encrypted = message
+  def offset_key
+    date_sq.digits.reverse.last(4).join.to_i
   end
+
+  # def encrypt(message, key = num_gen, date)
+  #   hash = {}
+  #   encrypted = message
+  # end
 end
