@@ -8,17 +8,22 @@ RSpec.describe Enigma do
     expect(enigma).to be_a(Enigma)
   end
 
-  it "can encrypt a message" do
+  xit "can encrypt a message" do
     enigma = Enigma.new
 
     expect(enigma.encrypt("kyle", "02715", "111122")).to eq()
   end
 
   it 'has a character set' do
-    encryption = Encryption.new("hello", "12345", "111122")
+    enigma = Enigma.new
 
-    expect(encryption.character_set.first).to eq("a")
-    expect(encryption.character_set.last).to eq (" ")
+    expect(enigma.character_set.first).to eq("a")
+    expect(enigma.character_set.last).to eq (" ")
   end
+
+  it 'generate a random 5 digit number' do
+    enigma = Enigma.new
+
+    expect(enigma.num_gen).to be(Integer)
 
 end
