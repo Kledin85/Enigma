@@ -39,7 +39,15 @@ class Enigma
       :offset_b => offset_key[1].to_i,
       :offset_c => offset_key[2].to_i,
       :offset_d => offset_key[3].to_i
+    }
+  end
 
+  def final_shift(key_arg = num_gen)
+    {
+      :shift_a =>  keys(key_arg).values[0] + offset.values[0],
+      :shift_b =>  keys(key_arg).values[1] + offset.values[1],
+      :shift_c =>  keys(key_arg).values[2] + offset.values[2],
+      :shift_d =>  keys(key_arg).values[3] + offset.values[3]
     }
   end
 
