@@ -45,5 +45,9 @@ RSpec.describe Enigma do
     expect(enigma.date).to eq(111122)
   end
 
+  it 'can square the date' do
+    enigma = Enigma.new
+
+    expect(enigma.date_sq).to eq(12348098884)
 
 end
