@@ -67,4 +67,15 @@ RSpec.describe Enigma do
     expect(enigma.offset.values[3]).to eq(4)
 
   end
+
+  it 'has a final shift hash' do
+    enigma = Enigma.new
+
+    expect(enigma.final_shift).to be_a(Hash)
+    expect(enigma.final_shift.values[0]).to eq(10)
+    expect(enigma.final_shift.values[1]).to eq(35)
+    expect(enigma.final_shift.values[2]).to eq(79)
+    expect(enigma.final_shift.values[3]).to eq(19)
+
+  end
 end
