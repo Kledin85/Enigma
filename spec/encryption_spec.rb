@@ -11,7 +11,7 @@ RSpec.describe Encryption do
   it 'has a character set' do
     encryption = Encryption.new
 
-    expect(encryption.character_set.first).to eq(["a"])
-    expect(encryption.character_set.last).to eq ([" "])
+    expect(encryption.character_set.first).to eq("a")
+    expect(encryption.character_set.last).to eq (" ")
   end
 end
