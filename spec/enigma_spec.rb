@@ -24,6 +24,15 @@ RSpec.describe Enigma do
   it 'generate a random 5 digit number' do
     enigma = Enigma.new
 
-    expect(enigma.num_gen).to be(Integer)
+    expect(enigma.num_gen).to be_a(String)
+  end
+
+  it "has a keys hash" do
+    enigma = Enigma.new
+
+    expect(enigma.keys).to be_a(Hash)
+    expect(enigma.keys("02175")[:key_A]).to eq(02)
+  end
+
 
 end
