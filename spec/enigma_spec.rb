@@ -9,10 +9,10 @@ RSpec.describe Enigma do
     expect(enigma).to be_a(Enigma)
   end
 
-  xit "can encrypt a message" do
+  it "can encrypt a message" do
     enigma = Enigma.new
 
-    expect(enigma.encrypt("kyle", "02715", "111122")).to eq()
+    expect(enigma.encrypt("hello world", "02715", "040895")).to eq("keder ohulw")
   end
 
   it 'has a character set' do
@@ -42,29 +42,29 @@ RSpec.describe Enigma do
   it 'can get the date as MMDDYY' do
     enigma = Enigma.new
 
-    expect(enigma.date).to eq("111122")
+    expect(enigma.date).to be_a(String)
   end
 
   it 'can square the date' do
     enigma = Enigma.new
 
-    expect(enigma.date_sq).to eq(12348098884)
+    expect(enigma.date_sq("040895")).to eq(1672401025)
   end
 
   it 'can grab the last four digits of date_sq' do
     enigma = Enigma.new
 
-    expect(enigma.offset_key).to eq("8884")
+    expect(enigma.offset_key("040895")).to eq("1025")
   end
 
   it 'has an offset hash' do
     enigma = Enigma.new
 
-    expect(enigma.offset).to be_a(Hash)
-    expect(enigma.offset.values[0]).to eq(8)
-    expect(enigma.offset.values[1]).to eq(8)
-    expect(enigma.offset.values[2]).to eq(8)
-    expect(enigma.offset.values[3]).to eq(4)
+    expect(enigma.offset("040895")).to be_a(Hash)
+    expect(enigma.offset("040895").values[0]).to eq(1)
+    expect(enigma.offset("040895").values[1]).to eq(0)
+    expect(enigma.offset("040895").values[2]).to eq(2)
+    expect(enigma.offset("040895").values[3]).to eq(5)
 
   end
 
@@ -72,10 +72,16 @@ RSpec.describe Enigma do
     enigma = Enigma.new
 
     expect(enigma.final_shift).to be_a(Hash)
-    expect(enigma.final_shift("02715").values[0]).to eq(10)
-    expect(enigma.final_shift("02715").values[1]).to eq(35)
-    expect(enigma.final_shift("02715").values[2]).to eq(79)
-    expect(enigma.final_shift("02715").values[3]).to eq(19)
+    expect(enigma.final_shift("02715", "040895").values[0]).to eq(3)
+    # require 'pry' ; binding.pry
+    expect(enigma.final_shift("02715", "040895").values[1]).to eq(27)
+    expect(enigma.final_shift("02715", "040895").values[2]).to eq(73)
+    expect(enigma.final_shift("02715", "040895").values[3]).to eq(20)
+  end
 
+  it 'can make an array of every shift as long as the message' do
+    enigma = Enigma.new
+
+    expect(enigma.shifts("hello world","02715", "040895")).to eq([3, 27, 73, 20, 3, 27, 73, 20, 3, 27, 73])
   end
 end
