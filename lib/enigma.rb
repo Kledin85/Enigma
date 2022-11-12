@@ -61,17 +61,15 @@ class Enigma
   end
 
 def encrypt(message, key = num_gen, date)
-  require 'pry' ; binding.pry
-  message.chars.map_with_index do |val, index|
+  encrypted_message = ""
+  message.chars.map.with_index do |val, index|
+    shifts = shifts(message, key, date)
+    encrypted_message << character_set.rotate(shifts[index] + character_set.index(val))[0]
+    # require 'pry' ; binding.pry
   end
 
-    # split_characters = message.split("")
-    #  new = split_characters.each do |chars|
-    #   character_set.rotate(final_shift(key, date)[:shift_a] + character_set.index(chars))[0]
-    #  end
-
     # hash = {}
-    # encrypted = message
+    encrypted_message
   end
 
 
