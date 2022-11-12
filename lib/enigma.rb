@@ -60,7 +60,7 @@ class Enigma
     end[0...message.length]
   end
 
-def encrypt(message, key = num_gen, date)
+def encrypt_message(message, key = num_gen, date)
   encrypted_message = ""
   message.chars.map.with_index do |val, index|
     shifts = shifts(message, key, date)
