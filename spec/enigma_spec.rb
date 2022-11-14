@@ -73,7 +73,6 @@ RSpec.describe Enigma do
 
     expect(enigma.final_shift).to be_a(Hash)
     expect(enigma.final_shift("02715", "040895").values[0]).to eq(3)
-    # require 'pry' ; binding.pry
     expect(enigma.final_shift("02715", "040895").values[1]).to eq(27)
     expect(enigma.final_shift("02715", "040895").values[2]).to eq(73)
     expect(enigma.final_shift("02715", "040895").values[3]).to eq(20)
@@ -91,6 +90,9 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world","02715", "040895")[:key]).to eq("02715")
     expect(enigma.encrypt("hello world","02715", "040895")[:date]).to eq("040895")
     expect(enigma.encrypt("hello world","02715", "040895")[:encryption]).to eq("keder ohulw")
+    expect(enigma.encrypt("HELLO WORLD","02715", "040895")[:encryption]).to eq("keder ohulw")
+    # expect(enigma.encrypt("HELLO WORLD!","02715", "040895")[:encryption]).to eq("keder ohulw")
+
 
   end
 end

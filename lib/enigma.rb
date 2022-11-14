@@ -18,7 +18,6 @@ class Enigma
       :key_c => key[2..3].to_i,
       :key_d => key[3..4].to_i
     }
-    # require 'pry' ; binding.pry
   end
 
   def date
@@ -44,7 +43,6 @@ class Enigma
   end
 
   def final_shift(key_arg = num_gen, date_key = date)
-    # require 'pry' ; binding.pry
     {
       :shift_a =>  keys(key_arg).values[0] + offset(date_key).values[0],
       :shift_b =>  keys(key_arg).values[1] + offset(date_key).values[1],
@@ -65,18 +63,15 @@ class Enigma
     message.chars.map.with_index do |val, index|
       shifts = shifts(message, key, date)
       encrypted_message << character_set.rotate(shifts[index] + character_set.index(val))[0]
-    # require 'pry' ; binding.pry
   end
     encrypted_message
   end
 
-  def encrypt(message, key = num_gen, date)
+  def encrypt(message, key = num_gen, date_key = date)
     {
-      encryption: encrypt_message(message, key, date),
+      encryption: encrypt_message(message.downcase, key, date_key),
       key:        key,
-      date:       date
+      date:       date_key
     }
-
   end
-
 end
