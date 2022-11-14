@@ -15,6 +15,12 @@ RSpec.describe Enigma do
     expect(enigma.encrypt_message("hello world", "02715", "040895")).to eq("keder ohulw")
   end
 
+  it "can decrypt a message" do
+    enigma = Enigma.new
+
+    expect(enigma.decrypt_message("keder ohulw", "02715", "040895")).to eq("hello world")
+  end
+
   it 'has a character set' do
     enigma = Enigma.new
 
@@ -91,6 +97,16 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world","02715", "040895")[:date]).to eq("040895")
     expect(enigma.encrypt("hello world","02715", "040895")[:encryption]).to eq("keder ohulw")
     expect(enigma.encrypt("HELLO WORLD","02715", "040895")[:encryption]).to eq("keder ohulw")
+    # expect(enigma.encrypt("HELLO WORLD!","02715", "040895")[:encryption]).to eq("keder ohulw")
+  end
+
+  it "can return a hash with the decrypted message and its key and date" do
+    enigma = Enigma.new
+
+    expect(enigma.decrypt("keder ohulw","02715", "040895")[:key]).to eq("02715")
+    expect(enigma.decrypt("keder ohulw","02715", "040895")[:date]).to eq("040895")
+    expect(enigma.decrypt("keder ohulw","02715", "040895")[:encryption]).to eq("hello world")
+    expect(enigma.decrypt("KEDER OHULW","02715", "040895")[:encryption]).to eq("hello world")
     # expect(enigma.encrypt("HELLO WORLD!","02715", "040895")[:encryption]).to eq("keder ohulw")
   end
 end
