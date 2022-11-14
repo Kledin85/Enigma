@@ -15,6 +15,12 @@ RSpec.describe Enigma do
     expect(enigma.encrypt_message("hello world", "02715", "040895")).to eq("keder ohulw")
   end
 
+  it "can decrypt a message" do
+    enigma = Enigma.new
+
+    expect(enigma.decrypt_message("keder ohulw", "02715", "040895")).to eq("hello world")
+  end
+
   it 'has a character set' do
     enigma = Enigma.new
 
