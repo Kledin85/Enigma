@@ -92,7 +92,5 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world","02715", "040895")[:encryption]).to eq("keder ohulw")
     expect(enigma.encrypt("HELLO WORLD","02715", "040895")[:encryption]).to eq("keder ohulw")
     # expect(enigma.encrypt("HELLO WORLD!","02715", "040895")[:encryption]).to eq("keder ohulw")
-
-
   end
 end
