@@ -59,8 +59,12 @@ module Enigma_mod
     encrypted_message = ""
     message.chars.map.with_index do |val, index|
       shifts = shifts(message, key, date)
-      encrypted_message << character_set.rotate(shifts[index] + character_set.index(val))[0]
-  end
+      if !character_set.include?(val)
+        encrypted_message << val
+      else
+        encrypted_message << character_set.rotate(shifts[index] + character_set.index(val))[0]
+      end
+    end
     encrypted_message
   end
 
@@ -68,9 +72,12 @@ module Enigma_mod
     decrypted_message = ""
     message.chars.map.with_index do |val, index|
       shifts = shifts(message, key, date)
-      decrypted_message << character_set.reverse.rotate(shifts[index] + character_set.reverse.index(val))[0]
-  end
+      if !character_set.include?(val)
+        decrypted_message << val
+      else
+        decrypted_message << character_set.reverse.rotate(shifts[index] + character_set.reverse.index(val))[0]
+      end
+    end
     decrypted_message
   end
-
 end
