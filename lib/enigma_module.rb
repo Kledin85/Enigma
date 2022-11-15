@@ -57,10 +57,11 @@ module Enigma_mod
 
   def encrypt_message(message, key = num_gen, date)
     encrypted_message = ""
+    shifts = shifts(message, key, date)
     message.chars.map.with_index do |val, index|
-      shifts = shifts(message, key, date)
       if !character_set.include?(val)
         encrypted_message << val
+        shifts.insert(index, 0)
       else
         encrypted_message << character_set.rotate(shifts[index] + character_set.index(val))[0]
       end
@@ -70,10 +71,11 @@ module Enigma_mod
 
   def decrypt_message(message, key = num_gen, date)
     decrypted_message = ""
+    shifts = shifts(message, key, date)
     message.chars.map.with_index do |val, index|
-      shifts = shifts(message, key, date)
       if !character_set.include?(val)
         decrypted_message << val
+        shifts.insert(index, 0)
       else
         decrypted_message << character_set.reverse.rotate(shifts[index] + character_set.reverse.index(val))[0]
       end
