@@ -97,7 +97,9 @@ RSpec.describe Enigma do
     expect(enigma.encrypt("hello world","02715", "040895")[:date]).to eq("040895")
     expect(enigma.encrypt("hello world","02715", "040895")[:encryption]).to eq("keder ohulw")
     expect(enigma.encrypt("HELLO WORLD","02715", "040895")[:encryption]).to eq("keder ohulw")
-    # expect(enigma.encrypt("HELLO WORLD!","02715", "040895")[:encryption]).to eq("keder ohulw")
+    expect(enigma.encrypt("HELLO WORLD!","02715", "040895")[:encryption]).to eq("keder ohulw!")
+    expect(enigma.encrypt("HELLO! WORLD!","02715", "040895")[:encryption]).to eq("keder! ohulw!")
+
   end
 
   it "can return a hash with the decrypted message and its key and date" do
@@ -105,8 +107,10 @@ RSpec.describe Enigma do
 
     expect(enigma.decrypt("keder ohulw","02715", "040895")[:key]).to eq("02715")
     expect(enigma.decrypt("keder ohulw","02715", "040895")[:date]).to eq("040895")
-    expect(enigma.decrypt("keder ohulw","02715", "040895")[:encryption]).to eq("hello world")
-    expect(enigma.decrypt("KEDER OHULW","02715", "040895")[:encryption]).to eq("hello world")
-    # expect(enigma.encrypt("HELLO WORLD!","02715", "040895")[:encryption]).to eq("keder ohulw")
+    expect(enigma.decrypt("keder ohulw","02715", "040895")[:decryption]).to eq("hello world")
+    expect(enigma.decrypt("KEDER OHULW","02715", "040895")[:decryption]).to eq("hello world")
+    expect(enigma.decrypt("KEDER OHULW!","02715", "040895")[:decryption]).to eq("hello world!")
+    expect(enigma.decrypt("KEDER! OHULW!","02715", "040895")[:decryption]).to eq("hello! world!")
+
   end
 end

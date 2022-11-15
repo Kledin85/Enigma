@@ -27,7 +27,6 @@ module Enigma_mod
 
   def offset_key(date_key = date)
     date_sq(date_key).digits.reverse.last(4).join
-    #comeback to look at why its reversing
   end
 
   def offset(date_key = date)
@@ -57,20 +56,29 @@ module Enigma_mod
 
   def encrypt_message(message, key = num_gen, date)
     encrypted_message = ""
+    shifts = shifts(message, key, date)
     message.chars.map.with_index do |val, index|
-      shifts = shifts(message, key, date)
-      encrypted_message << character_set.rotate(shifts[index] + character_set.index(val))[0]
-  end
+      if !character_set.include?(val)
+        encrypted_message << val
+        shifts.insert(index, 0)
+      else
+        encrypted_message << character_set.rotate(shifts[index] + character_set.index(val))[0]
+      end
+    end
     encrypted_message
   end
 
   def decrypt_message(message, key = num_gen, date)
     decrypted_message = ""
+    shifts = shifts(message, key, date)
     message.chars.map.with_index do |val, index|
-      shifts = shifts(message, key, date)
-      decrypted_message << character_set.reverse.rotate(shifts[index] + character_set.reverse.index(val))[0]
-  end
+      if !character_set.include?(val)
+        decrypted_message << val
+        shifts.insert(index, 0)
+      else
+        decrypted_message << character_set.reverse.rotate(shifts[index] + character_set.reverse.index(val))[0]
+      end
+    end
     decrypted_message
   end
-
 end

@@ -4,7 +4,7 @@ class Enigma
 
   def initialize
   end
-  
+
   def encrypt(message, key = num_gen, date_key = date)
     {
       encryption: encrypt_message(message.downcase, key, date_key),
@@ -15,7 +15,7 @@ class Enigma
 
   def decrypt(message, key = num_gen, date_key = date)
     {
-      encryption: decrypt_message(message.downcase, key, date_key),
+      decryption: decrypt_message(message.downcase, key, date_key),
       key:        key,
       date:       date_key
     }
