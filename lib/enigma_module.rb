@@ -27,7 +27,6 @@ module Enigma_mod
 
   def offset_key(date_key = date)
     date_sq(date_key).digits.reverse.last(4).join
-    #comeback to look at why its reversing
   end
 
   def offset(date_key = date)
